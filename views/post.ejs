@@ -1,0 +1,20 @@
+<%- include("partials/header"); -%>
+    <div class="body">
+        <h1>
+            <%= title %>
+                <hr>
+        </h1>
+        <div class="author">Author: <%= author %></div>
+        <img class="img rounded mx-auto d-block" src="<%= imgLink %>" alt="News Thumbnail">
+        <hr>
+        <%- content %>
+            <br>
+            <hr>
+            <div class="link">
+                <div class="iframe-container embed-responsive embed-responsive-21by9">
+                    <iframe class="embed-responsive-item" src="<%=videoLink%>" allowfullscreen></iframe>
+                </div>
+            </div>
+    </div>
+
+    <%- include("partials/footer"); -%>

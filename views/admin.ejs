@@ -1,0 +1,27 @@
+<%- include("partials/header"); -%>
+
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <form action="/admin" method="POST">
+            <div class="form-outline mb-4">
+                <select id="options" class="form-select content" aria-label="Default select example" name="selectedOption">
+                    <option value="1" selected="selected">Compose News</option>
+                    <option value="2">Delete Previous News</option>
+                    <option value="3">Create New User</option>
+                    <option value="4">Show all Users</option>
+
+                </select>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<!-- <script type="module">
+    var e = document.getElementById("options");
+    var value = e.value;
+    alert(value);
+</script> -->
+<%- include("partials/footer"); -%>

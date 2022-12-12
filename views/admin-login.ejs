@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+    <h3>Login to your account</h3>
+
+    <form action="/admin-login" method="POST">
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+            <label class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" />
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control" />
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
+    </form>
+
+    <%- include('partials/footer') %>

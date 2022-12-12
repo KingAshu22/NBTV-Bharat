@@ -1,0 +1,34 @@
+<%- include("partials/header"); -%>
+
+<h1 class="center">Edit Post</h1>
+<form action="/compose" method="post">
+    <div class="form-group">
+        <label>Post ID</label>
+        <input type="text" name="id" value="<%= id %>"><br>
+        <label>Update Article Publishing Date</label>
+        <input type="date" name="postDate" id="theDate" value =<%= date %> ><br>
+        <label>Title</label>
+        <input type="text" name="postTitle" class="form-control" autocomplete="off" value="<%= title %>">
+        <label>Post</label>
+        <textarea name="postBody" id="editor"><%= content %></textarea>
+        <label>Update YouTube Video Link</label>
+        <input type="text" name="postLink" autocomplete="off" value="<%= videoLink %>"
+            allow="autoplay" size="50" class="youtube"><br>
+        <label>Update Thumbnail Image Link (700 x 350)</label>
+        <input type="text" name="postImgLink" autocomplete="off" value="<%= imgLink %>"
+            size="50" class="img-link">
+    </div>
+    <button type="submit" class="btn btn-primary">Publish</button>
+</form>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+<%- include("partials/footer"); -%>
