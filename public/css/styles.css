@@ -4,6 +4,22 @@
     color: azure;
 }
 
+.fa-brands {
+    margin-right: 2rem;
+}
+
+.youtube:hover {
+    color: red;
+}
+
+.twitter:hover {
+    color: #1DA1F2;
+}
+
+.instagram:hover {
+    color: #8a3ab9;
+}
+
 .span-n {
     font-size: 200%;
 }
