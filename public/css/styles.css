@@ -4,7 +4,7 @@
     color: azure;
 }
 
-.fa-brands {
+.fa-brands, .fa-solid {
     margin-right: 2rem;
 }
 
@@ -18,6 +18,10 @@
 
 .instagram:hover {
     color: #8a3ab9;
+}
+
+.fa-solid:hover {
+    color: black;
 }
 
 .span-n {

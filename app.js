@@ -66,7 +66,7 @@ app.get("/admin", function (req, res) {
   res.render("admin");
 });
 
-app.get("/user-login", function (req, res) {
+app.get("/reporter-login", function (req, res) {
   res.render("user-login");
 });
 
@@ -102,7 +102,7 @@ app.post("/admin", function (req, res) {
   } else if (option == 4) {
     isAuthenticated = true;
     User.find({}, function (err, users) {
-      res.render("delete-users", {
+      res.render("delete-reporter", {
         users: users,
       });
     });
@@ -137,10 +137,10 @@ app.get("/update", function (req, res) {
   }
 });
 
-app.get("delete-users", function (req, res) {
+app.get("/delete-reporter", function (req, res) {
   if (isAuthenticated) {
     User.find({}, function (err, users) {
-      res.render("delete-users", {
+      res.render("delete-reporter", {
         users: users,
       });
     }).sort({ _id: -1 });
@@ -213,7 +213,7 @@ app.get("/posts/:postId", function (req, res) {
   });
 });
 
-app.post("/user-login", async (req, res) => {
+app.post("/reporter-login", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -249,7 +249,7 @@ app.get("/delete/:postId", function (req, res) {
   const requestedPostId = req.params.postId;
 
   Post.deleteOne({ _id: requestedPostId }, function (err, post) {
-    res.redirect("/");
+    res.redirect("/admin");
   });
 });
 
