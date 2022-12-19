@@ -1,10 +1,10 @@
 <%- include("partials/header"); -%>
     <div class="body">
         <h1>
-            <%= title %>
+            <div class="title"><%= title %></div>
                 <hr>
         </h1>
-        <div class="author">Author: <%= author %></div>
+        <div class="author"><p>Author: <%= author %></p></div>
         <img class="img rounded mx-auto d-block" src="<%= imgLink %>" alt="News Thumbnail">
         <hr>
         <%- content %>

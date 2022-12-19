@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="static-txt">
                 <ul class="dynamic-txts">
-                    <li><span>बोलता है रिपोर्टर...</span></li>
+                    <li><span><p>बोलता है रिपोर्टर...</p></span></li>
                 </ul>
             </div>
         </div>
@@ -61,7 +61,7 @@
                                         <%- (post.content.substring(0, 250) + "..."); %>
                                     </p>
                                     <p class="card-text">
-                                        <div class="author">Author: <%= post.author %></div>
+                                        <div class="author"><p>Author: <%= post.author %></p></div>
                                     </p>
                                     <a class="btn btn-primary" href="/posts/<%= post._id %>">Read more →</a>
                                 </div>

@@ -80,9 +80,9 @@
 .dynamic-txts li {
     color: #fff;
     list-style: none;
-    font-size: 60px;
+    font-size: 50%;
     font-weight: 500;
-    margin-top: 75%;
+    margin-top: 35vh;
 }
 
 .dynamic-txts li span {
@@ -92,11 +92,12 @@
 .dynamic-txts li span::after {
     content: "";
     position: absolute;
+    top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     background: #0000fd;
-    border-left: 2px solid #fff;
+    border-left: 2% solid #fff;
     animation: typing 1.5s steps(14) infinite;
 }
 
@@ -111,6 +112,10 @@
     font-size: smaller;
     font-style: italic;
     margin-bottom: 1%;
+}
+
+.title {
+    padding-top: 2%;
 }
 
 .navbar,
@@ -152,11 +157,11 @@
 
 h1,
 h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 p {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Kalam', cursive;
 }
 
 header {
