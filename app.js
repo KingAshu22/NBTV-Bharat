@@ -32,12 +32,17 @@ const postSchema = {
 
 const Post = mongoose.model("Post", postSchema);
 
-const userSchema = new mongoose.Schema({
+const reporterSchema = new mongoose.Schema({
+  pic: String,
+  fullName: String,
+  id: String,
+  designation: String,
+  aadhaar: String,
   username: String,
   password: String,
 });
 
-const User = new mongoose.model("User", userSchema);
+const Reporter = new mongoose.model("Reporter", reporterSchema);
 
 const adminSchema = new mongoose.Schema({
   username: String,
@@ -62,12 +67,12 @@ app.get("/admin-login", function (req, res) {
   res.render("admin-login");
 });
 
-app.get("/admin", function (req, res) {
-  res.render("admin");
-});
+// app.get("/admin", function (req, res) {
+//   res.render("admin");
+// });
 
 app.get("/reporter-login", function (req, res) {
-  res.render("user-login");
+  res.render("reporter-login");
 });
 
 app.post("/admin-login", async (req, res) => {
@@ -101,9 +106,9 @@ app.post("/admin", function (req, res) {
     res.render("register");
   } else if (option == 4) {
     isAuthenticated = true;
-    User.find({}, function (err, users) {
-      res.render("delete-reporter", {
-        users: users,
+    Reporter.find({}, function (err, reporters) {
+      res.render("reporterTable", {
+        reporters: reporters,
       });
     });
   }
@@ -139,9 +144,9 @@ app.get("/update", function (req, res) {
 
 app.get("/delete-reporter", function (req, res) {
   if (isAuthenticated) {
-    User.find({}, function (err, users) {
+    Reporter.find({}, function (err, reporters) {
       res.render("delete-reporter", {
-        users: users,
+        reporters: users,
       });
     }).sort({ _id: -1 });
   } else {
@@ -168,12 +173,17 @@ app.post("/compose", function (req, res) {
 
 app.post("/register", async (req, res) => {
   try {
-    const user = new User({
+    const reporter = new Reporter({
+        pic: req.body.pic,
+        fullName: req.body.fullName,
+        id: req.body.id,
+        designation: req.body.designation,
+        aadhaar: req.body.aadhaar,
         username: req.body.username,
         password: req.body.password,
       });
 
-      await user.save(function (err) {
+      await reporter.save(function (err) {
         if (!err) {
           res.render("admin");
           alert("User Successfully Created!");
@@ -213,6 +223,20 @@ app.get("/posts/:postId", function (req, res) {
   });
 });
 
+app.get("/reporterData/:reporterId", function (req, res) {
+  const requestedReporterId = req.params._id;
+
+  Reporter.findOne({ _id: requestedReporterId }, function (err, reporter) {
+    res.render("reporter", {
+      pic: reporter.pic,
+      fullName: reporter.fullName,
+      id: reporter.id,
+      designation: reporter.designation,
+      aadhaar: reporter.aadhaar,
+    });
+  });
+});
+
 app.post("/reporter-login", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -223,7 +247,7 @@ app.post("/reporter-login", async (req, res) => {
   }
   if (await password === user.password) {
       isAuthenticated = true;
-      res.render("compose");
+      res.render("reporter-compose");
     } else {
       res.render("error");
     }

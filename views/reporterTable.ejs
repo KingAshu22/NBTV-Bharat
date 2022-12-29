@@ -1,0 +1,35 @@
+<%- include("partials/header"); -%>
+
+    <h2 class="center">All Users</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- <th scope="col">Computer ID</th> -->
+                <th scope="col">ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <!-- <th scope="col">View</th> -->
+                <!-- <th scope="col">Delete</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <% reporters.forEach(function(reporter) { %>
+                <tr>
+                    <!-- <td>
+                        <%= reporter._id %>
+                    </td> -->
+                    <td>
+                        <%= reporter.id %>
+                    </td>
+                    <td>
+                        <%= reporter.username %>
+                    </td>
+                    <td><%= reporter.password %></td>
+                    <!-- <td><a class="btn btn-primary" href="/reporterData/<%= reporter._id %>">View Reporter</a></td> -->
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+
+    <%- include("partials/footer"); -%>
