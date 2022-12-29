@@ -241,11 +241,11 @@ app.post("/reporter-login", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  const user = await User.findOne({ username });
-  if (!user) {
+  const reporter = await Reporter.findOne({ username });
+  if (!reporter) {
     res.render("error");
   }
-  if (await password === user.password) {
+  if (await password === reporter.password) {
       isAuthenticated = true;
       res.render("reporter-compose");
     } else {
