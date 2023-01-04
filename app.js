@@ -273,7 +273,7 @@ app.get("/delete/:postId", function (req, res) {
   const requestedPostId = req.params.postId;
 
   Post.deleteOne({ _id: requestedPostId }, function (err, post) {
-    res.redirect("/admin");
+    res.render("/admin");
   });
 });
 
