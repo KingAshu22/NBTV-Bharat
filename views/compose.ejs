@@ -6,9 +6,9 @@
             <label class="content">Enter Article Publishing Date</label>
             <input type="date" name="postDate" id="theDate"><br>
             <label class="content">Title</label>
-            <input type="text" name="postTitle" class="form-control" autocomplete="off">
+            <input type="text" name="postTitle" class="form-control" autocomplete="off" required>
             <label class="content">Author Name</label>
-            <input type="text" name="postAuthor" class="form-control" autocomplete="off">
+            <input type="text" name="postAuthor" class="form-control" autocomplete="off" required>
             <!-- <select class="form-select content" aria-label="Default select example" name="postCategory">
                 <option selected>Select News Category</option>
                 <option value="National">National</option>
@@ -25,7 +25,7 @@
                 <option value="Automobile">Automobile</option>
             </select> -->
             <label class="content">Post</label>
-            <textarea name="postBody" id="editor">Start Writing Here.</textarea>
+            <textarea name="postBody" id="editor" required></textarea>
             <label class="content">Enter YouTube Video Link</label>
             <input type="text" name="postLink" autocomplete="off"
                 value="https://www.youtube.com/embed/<code>" allow="autoplay" size="50" class="youtube"><br>

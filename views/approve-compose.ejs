@@ -1,0 +1,50 @@
+<%- include("partials/header"); -%>
+
+    <h1 class="center">Approve & Publish</h1>
+    <form action="/compose" method="post">
+        <div class="form-group">
+            <label class="content">Enter Article Publishing Date</label>
+            <input type="date" name="postDate" id="theDate"><br>
+            <label class="content">Title</label>
+            <input type="text" name="postTitle" class="form-control" autocomplete="off" value="<%= title %>" required>
+            <label class="content">Author Name</label>
+            <input type="text" name="postAuthor" class="form-control" autocomplete="off" value="<%= author %>" required>
+            <label class="content">Post</label>
+            <textarea name="postBody" id="editor" required><%= content %></textarea>
+            <label class="content">File Links</label>
+            <textarea name="links" class="form-control"><%= links %></textarea>
+            <label class="content">Enter YouTube Video Link</label>
+            <input type="text" name="postLink" autocomplete="off" value="https://www.youtube.com/embed/"
+                allow="autoplay" size="50" class="youtube" required><br>
+            <label class="content">Enter Thumbnail Image Link (700 x 350)</label>
+            <input type="text" name="postImgLink" autocomplete="off" value="https://drive.google.com/uc?export=view&id="
+                size="50" class="img-link" required>
+        </div>
+        <button type="submit" class="btn btn-primary content">Approve & Publish</button>
+    </form>
+    <hr>
+    <!-- <a href="/update" class="btn btn-primary">Delete previous posts.</a> -->
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    <script>
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        var today = year + "-" + month + "-" + day;
+        document.getElementById("theDate").value = today;
+    </script>
+    <%- include("partials/footer"); -%>

@@ -4,7 +4,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 let alert = require("alert");
-// var flash = require("express-flash");
+var flash = require("express-flash");
 
 const aboutContent =
   "News Book TV is a News Website. This Website talks about the real news of India. Our website posts news articles that focus only on news content that connects the people living in India, we  shows you the real truth of India, and gives you a clear and true news of the country. If that sounds like it could be helpful for you, please join us!";
@@ -32,11 +32,22 @@ const postSchema = {
 
 const Post = mongoose.model("Post", postSchema);
 
+const reporterPostSchema = {
+  date: String,
+  title: String,
+  author: String,
+  content: String,
+  links: String
+};
+
+const reporterPost = mongoose.model("reporterPost", reporterPostSchema);
+
 const reporterSchema = new mongoose.Schema({
   pic: String,
   fullName: String,
   id: String,
   designation: String,
+  contact: String,
   aadhaar: String,
   username: String,
   password: String,
@@ -94,17 +105,30 @@ app.post("/admin-login", async (req, res) => {
 app.post("/admin", function (req, res) {
   option = req.body.selectedOption;
   if (option == 1) {
-    res.render("compose");
+    if (isAuthenticated) {
+      reporterPost
+        .find({}, function (err, posts) {
+          res.render("approve", {
+            posts: posts,
+          });
+        })
+        .sort({ _id: -1 });
+    } else {
+      res.render("error");
+    }
   }
   else if (option == 2) {
+    res.render("compose");
+  }
+  else if (option == 3) {
     Post.find({}, function (err, posts) {
       res.render("update", {
         posts: posts,
       });
     }).sort({ _id: -1 });
-  } else if (option == 3) {
-    res.render("register");
   } else if (option == 4) {
+    res.render("register");
+  } else if (option == 5) {
     isAuthenticated = true;
     Reporter.find({}, function (err, reporters) {
       res.render("reporterTable", {
@@ -171,6 +195,23 @@ app.post("/compose", function (req, res) {
   });
 });
 
+app.post("/reporter-compose", function (req, res) {
+  const Post = new reporterPost({
+    date: req.body.postDate,
+    title: req.body.postTitle,
+    author: req.body.postAuthor,
+    content: req.body.postBody,
+    links: req.body.links
+  });
+
+  Post.save(function (err) {
+    if (!err) {
+      alert("Your news article has been succesfully published.");
+      res.redirect("/");
+    }
+  });
+});
+
 app.post("/register", async (req, res) => {
   try {
     const reporter = new Reporter({
@@ -178,6 +219,7 @@ app.post("/register", async (req, res) => {
         fullName: req.body.fullName,
         id: req.body.id,
         designation: req.body.designation,
+        contact: req.body.contact,
         aadhaar: req.body.aadhaar,
         username: req.body.username,
         password: req.body.password,
@@ -247,7 +289,9 @@ app.post("/reporter-login", async (req, res) => {
   }
   if (await password === reporter.password) {
       isAuthenticated = true;
-      res.render("reporter-compose");
+      res.render("reporter-compose", {
+        name: reporter.fullName
+      });
     } else {
       res.render("error");
     }
@@ -269,11 +313,26 @@ app.get("/update/:postId", function (req, res) {
   });
 });
 
+app.get("/approve/:postId", function (req, res) {
+  const requestedPostId = req.params.postId;
+
+  reporterPost.findOne({ _id: requestedPostId }, function (err, post) {
+    res.render("approve-compose", {
+      id: post._id,
+      date: post.date,
+      title: post.title,
+      author: post.author,
+      content: post.content,
+      links: post.links
+    });
+  });
+});
+
 app.get("/delete/:postId", function (req, res) {
   const requestedPostId = req.params.postId;
 
   Post.deleteOne({ _id: requestedPostId }, function (err, post) {
-    res.render("/admin");
+    alert("Successfully Deleted.")
   });
 });
 
@@ -282,6 +341,7 @@ app.get("/delete/:userId", function (req, res) {
 
   User.deleteOne({ _id: requestedUserId }, function (err, user) {
     res.redirect("/admin");
+    alert("Successfully Deleted User.");
   });
 });
 

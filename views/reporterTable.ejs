@@ -7,6 +7,8 @@
             <tr>
                 <!-- <th scope="col">Computer ID</th> -->
                 <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contact Number</th>
                 <th scope="col">Username</th>
                 <th scope="col">Password</th>
                 <!-- <th scope="col">View</th> -->
@@ -16,11 +18,14 @@
         <tbody>
             <% reporters.forEach(function(reporter) { %>
                 <tr>
-                    <!-- <td>
-                        <%= reporter._id %>
-                    </td> -->
                     <td>
                         <%= reporter.id %>
+                    </td>
+                    <td>
+                        <%= reporter.fullName %>
+                    </td>
+                    <td>
+                        <%= reporter.contact %>
                     </td>
                     <td>
                         <%= reporter.username %>

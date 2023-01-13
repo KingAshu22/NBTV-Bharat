@@ -1,0 +1,33 @@
+<%- include("partials/header"); -%>
+
+<h2 class="center">All Posts</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Date</th> 
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Read News</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% posts.forEach(function(post) { %>
+            <tr>
+                <td>
+                    <%= post.date %>
+                </td>
+                <td>
+                    <%= post.title %>
+                </td>
+                <td>
+                    <%= post.author %>
+                </td>
+                <!-- <td><a class="btn btn-primary" href="/update/<%= post._id %>">Edit</a></td> -->
+                <td><a class="btn btn-primary" href="/approve/<%= post._id %>">Approve</a></td>
+            </tr>
+            <% }); %>
+    </tbody>
+</table>
+
+<%- include("partials/footer"); -%>
