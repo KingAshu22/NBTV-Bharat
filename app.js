@@ -160,7 +160,7 @@ app.post("/admin", function (req, res) {
     }).sort({ _id: -1 });
   } else if (option == 4) {
     Post.find({}, function (err, posts) {
-      resolveSoa.render("delete-news", {
+      res.render("delete-news", {
         posts: posts,
       });
     }).sort({ _id: -1 });
