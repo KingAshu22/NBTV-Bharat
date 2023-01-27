@@ -8,8 +8,6 @@ var flash = require("express-flash");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const { stringify } = require("querystring");
-const { resolveSoa } = require("dns");
 
 const aboutContent =
   "News Book TV is a News Website. This Website talks about the real news of India. Our website posts news articles that focus only on news content that connects the people living in India, we  shows you the real truth of India, and gives you a clear and true news of the country. If that sounds like it could be helpful for you, please join us!";
