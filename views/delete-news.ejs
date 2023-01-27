@@ -17,8 +17,7 @@
             <td>
                 <%= post.author %>
             </td>
-            <!-- <td><a class="btn btn-primary" href="/update/<%= post._id %>">Edit</a></td> -->
-            <td><a class="btn btn-primary" href="/delete/<%= post._id %>">Delete</a></td>
+            <td><a class="btn btn-danger" href="/delete-news/<%= post._id %>">Delete</a></td>
         </tr>
         <% }); %>
     </tbody>

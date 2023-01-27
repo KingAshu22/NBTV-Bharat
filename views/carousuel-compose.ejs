@@ -1,0 +1,53 @@
+<%- include("partials/header"); -%>
+
+    <h1 class="center">Festival Update Compose</h1>
+    <form action="/carousuel-compose" method="post">
+        <div class="form-group">
+            <label class="content">Enter Festival Post publishing Date</label>
+            <input type="date" name="date" id="theDate"><br>
+            <label class="content">Enter Festival Post Image Link</label>
+            <input type="text" name="carousuelImgLink" autocomplete="off" value="https://drive.google.com/uc?export=view&id="
+                size="50" class="img-link">
+        </div>
+        <button type="submit" class="btn btn-primary content">Publish</button>
+    </form>
+    <hr>
+    <a href="https://ezgif.com/maker" target=”_blank”>GIF Maker</a>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Link</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% festivalPosts.forEach(function(festivalPost) { %>
+                <tr>
+                    <td>
+                        <%= festivalPost.date %>
+                    </td>
+                    <td>
+                        <a href="<%= festivalPost.imgLink %>"><%= festivalPost.imgLink %></a>
+                    </td>
+                    <td><a class="btn btn-danger" href="/delete-festival-post/<%= festivalPost._id %>">Delete</a></td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+
+    <script>
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        var today = year + "-" + month + "-" + day;
+        document.getElementById("theDate").value = today;
+    </script>
+    <%- include("partials/footer"); -%>

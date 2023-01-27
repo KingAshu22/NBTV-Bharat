@@ -2,7 +2,7 @@
 
     <h1>Compose New News</h1>
 
-    <form action="/reporter-compose" method="post">
+    <form action="/reporter-compose" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="content">Enter Article Publishing Date</label>
             <input type="date" name="postDate" id="theDate"><br>
@@ -27,8 +27,8 @@
                 </select> -->
             <label class="content">Post</label>
             <textarea name="postBody" id="editor"></textarea>
-            <label class="content">Enter all the uploading media Drive links.(Please Enter 1 Link in each line)</label>
-            <textarea name="links" class="form-control"></textarea>
+            <label class="content">Upload News files</label>
+            <input type="file" name="news" class="form-control" multiple />
         </div>
         <button type="submit" class="btn btn-primary content">Publish</button>
     </form>

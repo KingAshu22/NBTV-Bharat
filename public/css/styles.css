@@ -151,6 +151,10 @@
     background: #0000fd !important;
 }
 
+.btn-danger {
+    background-color: red !important;
+}
+
 .btn:hover {
     background: #02028b !important;
 }

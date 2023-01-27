@@ -11,8 +11,30 @@
             <input type="text" name="postAuthor" class="form-control" autocomplete="off" value="<%= author %>" required>
             <label class="content">Post</label>
             <textarea name="postBody" id="editor" required><%= content %></textarea>
-            <label class="content">File Links</label>
-            <textarea name="links" class="form-control"><%= links %></textarea>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Download</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% links.forEach(function(link) { %>
+                        <tr>
+                            <td>
+                                <%= link %>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="/download/<%= link %>">Download</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="/delete/<%= link %>">Delete</a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
             <label class="content">Enter YouTube Video Link</label>
             <input type="text" name="postLink" autocomplete="off" value="https://www.youtube.com/embed/"
                 allow="autoplay" size="50" class="youtube" required><br>

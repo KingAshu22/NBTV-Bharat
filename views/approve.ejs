@@ -9,13 +9,14 @@
             <th scope="col">Title</th>
             <th scope="col">Author</th>
             <th scope="col">Read News</th>
+            <th scope="col">Delete News</th>
         </tr>
     </thead>
     <tbody>
         <% posts.forEach(function(post) { %>
             <tr>
                 <td>
-                    <%= post.date %>
+                    <%= post.timestamp %>
                 </td>
                 <td>
                     <%= post.title %>
@@ -25,6 +26,7 @@
                 </td>
                 <!-- <td><a class="btn btn-primary" href="/update/<%= post._id %>">Edit</a></td> -->
                 <td><a class="btn btn-primary" href="/approve/<%= post._id %>">Approve</a></td>
+                <td><a class="btn btn-danger" href="/delete-reporter-news/<%= post._id %>">Delete</a></td>
             </tr>
             <% }); %>
     </tbody>
