@@ -8,6 +8,7 @@ var flash = require("express-flash");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const moment = require("moment");
 
 const aboutContent =
   "News Book TV is a News Website. This Website talks about the real news of India. Our website posts news articles that focus only on news content that connects the people living in India, we  shows you the real truth of India, and gives you a clear and true news of the country. If that sounds like it could be helpful for you, please join us!";
@@ -54,13 +55,10 @@ var seconds = date.getSeconds();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;
 
-var todayDateTime =
-  year + "-" + month + "-" + day + "--" + hours + ":" + minutes + ":" + seconds;
-
 const reporterPostSchema = {
   timestamp: {
     type: String,
-    default: todayDateTime,
+    default: moment().format(),
   },
   date: String,
   title: String,

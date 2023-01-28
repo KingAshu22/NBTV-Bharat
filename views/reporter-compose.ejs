@@ -1,16 +1,28 @@
 <%- include("partials/header"); -%>
 
-    <h1>Compose New News</h1>
+<h1>Compose New News</h1>
 
-    <form action="/reporter-compose" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label class="content">Enter Article Publishing Date</label>
-            <input type="date" name="postDate" id="theDate"><br>
-            <label class="content">Title</label>
-            <input type="text" name="postTitle" class="form-control" autocomplete="off">
-            <label class="content">Author Name</label>
-            <input type="text" name="postAuthor" class="form-control" readonly autocomplete="off" value="<%= name %>">
-            <!-- <select class="form-select content" aria-label="Default select example" name="postCategory">
+<form action="/reporter-compose" method="post" enctype="multipart/form-data">
+  <div class="form-group">
+    <label class="content">Enter Article Publishing Date</label>
+    <input type="date" name="postDate" id="theDate" /><br />
+    <label class="content">Title</label>
+    <input
+      type="text"
+      name="postTitle"
+      class="form-control"
+      autocomplete="off"
+    />
+    <label class="content">Author Name</label>
+    <input
+      type="text"
+      name="postAuthor"
+      class="form-control"
+      readonly
+      autocomplete="off"
+      value="<%= name %>"
+    />
+    <!-- <select class="form-select content" aria-label="Default select example" name="postCategory">
                     <option selected>Select News Category</option>
                     <option value="National">National</option>
                     <option value="Business">Business</option>
@@ -25,37 +37,36 @@
                     <option value="Science">Science</option>
                     <option value="Automobile">Automobile</option>
                 </select> -->
-            <label class="content">Post</label>
-            <textarea name="postBody" id="editor"></textarea>
-            <label class="content">Upload News files</label>
-            <input type="file" name="news" class="form-control" multiple />
-        </div>
-        <button type="submit" class="btn btn-primary content">Publish</button>
-    </form>
-    <hr>
-    <!-- <a href="/update" class="btn btn-primary">Delete previous posts.</a> -->
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
-        var date = new Date();
+    <label class="content">Post</label>
+    <textarea name="postBody" id="editor"></textarea>
+    <label class="content">Upload News files</label>
+    <input type="file" name="news" class="form-control" multiple />
+  </div>
+  <button type="submit" class="btn btn-primary content">Publish</button>
+</form>
+<hr />
+<!-- <a href="/update" class="btn btn-primary">Delete previous posts.</a> -->
+<script>
+  ClassicEditor.create(document.querySelector("#editor"))
+    .then((editor) => {
+      console.log(editor);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+</script>
+<script>
+  var date = new Date();
 
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  var year = date.getFullYear();
 
-        if (month < 10) month = "0" + month;
-        if (day < 10) day = "0" + day;
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
 
-        var today = year + "-" + month + "-" + day;
-        document.getElementById("theDate").value = today;
-    </script>
+  var today = year + "-" + month + "-" + day;
+  document.getElementById("theDate").value = today;
+</script>
 
-    <%- include("partials/footer"); -%>
+<%- include("partials/footer"); -%>
