@@ -1,25 +1,31 @@
 <%- include("partials/header"); -%>
 
 <div class="d-flex align-items-center justify-content-center vh-100">
-    <div class="text-center">
-        <form action="/admin" method="POST">
-            <div class="form-outline mb-4">
-                <select id="options" class="form-select content" aria-label="Default select example" name="selectedOption">
-                    <option value="1" selected="selected">Approve News</option>
-                    <option value="2">Compose News</option>
-                    <option value="3">Update Previous News</option>
-                    <option value="4">Delete Previous News</option>
-                    <option value="5">Create New Reporter</option>
-                    <option value="6">Show all Reporters</option>
-                    <option value="7">Festival Update</option>
-                </select>
+  <div class="text-center">
+    <form action="/admin" method="POST">
+      <div class="form-outline mb-4">
+        <select
+          id="options"
+          class="form-select content"
+          aria-label="Default select example"
+          name="selectedOption"
+        >
+          <option value="1" selected="selected">Approve News</option>
+          <option value="2">Compose News</option>
+          <option value="3">Update Previous News</option>
+          <option value="4">Delete Previous News</option>
+          <option value="5">Create New Reporter</option>
+          <option value="6">Show all Reporters</option>
+          <option value="7">Festival Update</option>
+        </select>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
-            </div>
-        </form>
-        
-    </div>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 <!-- <script type="module">
     var e = document.getElementById("options");

@@ -301,7 +301,7 @@ app.get("/delete/:link", (req, res) => {
   fs.unlink(path, (err) => {
     if (err) {
       res.render("error");
-    };
+    }
     console.log(`${path} was deleted`);
     alert("Successfully Deleted");
     res.render("admin");
@@ -332,10 +332,11 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/edit", function (req, res) {
-  const requestedPostId = req.params.postId;
-  Post.updateOne(
-    { _id: requestedPostId },
+app.post("/edit", async function (req, res) {
+  const requestedPostId = req.body.id;
+  console.log(req.body);
+  const post = await Post.updateOne(
+    { _id: mongoose.Types.ObjectId(requestedPostId) },
     {
       date: req.body.postDate,
       title: req.body.postTitle,
@@ -345,6 +346,7 @@ app.post("/edit", function (req, res) {
       imgLink: req.body.postImgLink,
     }
   );
+  console.log(post);
   alert("Successfully Updated the news.");
   res.render("admin");
 });
