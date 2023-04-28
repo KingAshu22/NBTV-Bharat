@@ -9,6 +9,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const moment = require("moment");
+const { report } = require("process");
 
 const aboutContent =
   "News Book TV is a News Website. This Website talks about the real news of India. Our website posts news articles that focus only on news content that connects the people living in India, we  shows you the real truth of India, and gives you a clear and true news of the country. If that sounds like it could be helpful for you, please join us!";
@@ -75,7 +76,10 @@ const reporterSchema = new mongoose.Schema({
   id: String,
   designation: String,
   contact: String,
+  email: String,
   aadhaar: String,
+  address: String,
+  pan: String,
   username: String,
   password: String,
 });
@@ -316,7 +320,10 @@ app.post("/register", async (req, res) => {
       id: req.body.id,
       designation: req.body.designation,
       contact: req.body.contact,
+      email: req.body.email,
+      address: req.body.address,
       aadhaar: req.body.aadhaar,
+      pan: req.body.pan,
       username: req.body.username,
       password: req.body.password,
     });
@@ -366,16 +373,23 @@ app.get("/posts/:postId", function (req, res) {
   });
 });
 
-app.get("/reporterData/:reporterId", function (req, res) {
-  const requestedReporterId = req.params._id;
+app.get("/reporterID/:reporterId", function (req, res) {
+  const requestedReporterId = req.params.reporterId;
 
-  Reporter.findOne({ _id: requestedReporterId }, function (err, reporter) {
-    res.render("reporter", {
+  Reporter.findOne({ id: requestedReporterId }, function (err, reporter) {
+    if (err) {
+      console.log(err); // log the error to the console
+    }
+    res.render("reporterID", {
       pic: reporter.pic,
       fullName: reporter.fullName,
       id: reporter.id,
       designation: reporter.designation,
       aadhaar: reporter.aadhaar,
+      email: reporter.email,
+      address: reporter.address,
+      contact: reporter.contact,
+      pan: reporter.pan,
     });
   });
 });

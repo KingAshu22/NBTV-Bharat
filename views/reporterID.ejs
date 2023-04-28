@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee ID Card</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    /* Custom styles for ID card */
+    .card {
+      max-width: 300px;
+      margin: auto;
+      margin-top: 30px;
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
+    }
+    .card-header {
+      background-color: #0000fd;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .card-body {
+      text-align: left;
+    }
+    .employee-photo {
+      display: block;
+      margin: 0 auto;
+      max-width: 100px;
+      border: 2px solid #000000;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .employee-name {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .employee-title {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .employee-details {
+      font-size: 14px;
+    }
+    .employee-details li {
+      list-style: none;
+      margin-bottom: 5px;
+    }
+    strong {
+      margin-right: 3%;
+    }
+    .description {
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <img src="https://drive.google.com/uc?export=view&id=1yUEz1EfLV_9Q09M1YrjqwquWYYOwjYq0" alt="NBTV Bharat Logo" width="50%" height="20%"><br>
+        Reporter ID Card
+      </div>
+      <div class="card-body">
+        <img src="<%= pic %>" alt="Employee Photo" class="employee-photo">
+        <div class="employee-name"><%= fullName %></div>
+        <div class="employee-title"><%= designation %></div>
+        <ul class="employee-details">
+          <li><strong>ID:</strong><%= id %></li>
+          <li><strong>Email:</strong><%= email %></li>
+          <li><strong>Phone:</strong><%= contact %></li>
+          <li><strong>Address:</strong><%= address %></li>
+          <li><strong>Aadhaar No:</strong><%= aadhaar %></li>
+          <li><strong>PAN Card No:</strong><%= pan %></li>
+        </ul>
+        <hr>
+        <p class="description">This ID card serves as a legal form of identification for the employee named above and is issued by NBTV Bharat for company use only.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

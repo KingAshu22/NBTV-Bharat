@@ -8,6 +8,10 @@
                 <!-- <th scope="col">Computer ID</th> -->
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">View ID Card</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +30,7 @@
                         <%= reporter.username %>
                     </td>
                     <td><%= reporter.password %></td>
-                    <!-- <td><a class="btn btn-primary" href="/reporterData/<%= reporter._id %>">View Reporter</a></td> -->
+                    <td><a class="btn btn-primary" href="/reporterID/<%= reporter.id %>">View Reporter</a></td>
                 </tr>
                 <% }); %>
         </tbody>
