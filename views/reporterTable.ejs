@@ -19,6 +19,8 @@
                 <tr>
                     <td>
                         <%= reporter.id %>
+                        <% const regex = /\d+/; %>
+                        <% const idNumber = reporter.id.match(regex)[0]; %>
                     </td>
                     <td>
                         <%= reporter.fullName %>
@@ -30,7 +32,7 @@
                         <%= reporter.username %>
                     </td>
                     <td><%= reporter.password %></td>
-                    <td><a class="btn btn-primary" href="/reporterID/<%= reporter.id %>">View Reporter</a></td>
+                    <td><a class="btn btn-primary" href="/verify-reporter/NB/<%= idNumber %>">View Reporter</a></td>
                 </tr>
                 <% }); %>
         </tbody>
