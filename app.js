@@ -375,7 +375,7 @@ app.get("/posts/:postId", function (req, res) {
 
 app.get("/verify-reporter/NB/:reporterId", function (req, res) {
   const idNumber = req.params.reporterId;
-  const requestedReporterId = String("NB" + idNumber);
+  const requestedReporterId = String("NB/" + idNumber);
 
   Reporter.findOne({ id: requestedReporterId }, function (err, reporter) {
     if (err) {
