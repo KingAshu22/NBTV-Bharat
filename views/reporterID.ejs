@@ -1,91 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee ID Card</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-    /* Custom styles for ID card */
-    .card {
-      max-width: 300px;
-      margin: auto;
-      margin-top: 30px;
-      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
-    }
-    .card-header {
-      background-color: #0000fd;
-      color: #fff;
-      text-align: center;
-      font-weight: bold;
-      font-size: 20px;
-    }
-    .card-body {
-      text-align: left;
-    }
-    .employee-photo {
-      display: block;
-      margin: 0 auto;
-      max-width: 100px;
-      border: 2px solid #000000;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-    .employee-name {
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .employee-title {
-      text-align: center;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    .employee-details {
-      font-size: 14px;
-    }
-    .employee-details li {
-      list-style: none;
-      margin-bottom: 5px;
-    }
-    strong {
-      margin-right: 3%;
-    }
-    .description {
-      text-align: justify;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="card">
-      <div class="card-header">
-        <img src="https://drive.google.com/uc?export=view&id=1yUEz1EfLV_9Q09M1YrjqwquWYYOwjYq0" alt="NBTV Bharat Logo" width="50%" height="20%"><br>
-        Reporter ID Card
-      </div>
-      <div class="card-body">
-        <img src="<%= pic %>" alt="Employee Photo" class="employee-photo">
-        <div class="employee-name"><%= fullName %></div>
-        <div class="employee-title"><%= designation %></div>
-        <ul class="employee-details">
-          <li><strong>ID:</strong><%= id %></li>
-          <li><strong>Email:</strong><%= email %></li>
-          <li><strong>Phone:</strong><%= contact %></li>
-          <li><strong>Address:</strong><%= address %></li>
-          <li><strong>Aadhaar No:</strong><%= aadhaar %></li>
-          <li><strong>PAN Card No:</strong><%= pan %></li>
-        </ul>
-        <hr>
-        <p class="description">This ID card serves as a legal form of identification for the employee named above and is issued by NBTV Bharat for company use only.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporter ID Card No: <%= id %></title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <style>
+      /* Custom styles for ID card */
+      .card {
+        max-width: 480px;
+        margin: auto;
+        margin-top: 30px;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+      }
+      .card-header {
+        background-color: #0000fd;
+        color: #0000fd;
+        text-align: center;
+        font-weight: bold;
+        font-size: 10px;
+      }
+      .card-body {
+        text-align: left;
+      }
+      .employee-photo {
+        display: block;
+        margin: 0 auto;
+        max-width: 100px;
+        border: 2px solid #000000;
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      .employee-name {
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .employee-title {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 2px;
+      }
+      .employee-details {
+        font-size: 14px;
+      }
+      .employee-details li {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+      strong {
+        margin-right: 3%;
+      }
+      .description {
+        text-align: justify;
+      }
+      .qr {
+        display: block;
+        margin: 0 auto;
+      }
+      .outer-div {
+        background-color: black;
+        padding: 20px;
+        text-align: center;
+      }
+
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+
+        .print,
+        .print * {
+          visibility: visible;
+        }
+        .logo {
+          margin: 0px;
+          padding: 0px;
+        }
+        .print {
+          width: 100%;
+          margin: 0;
+          border: 2px solid #000000;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer-div">
+      <button onclick="window.print()">Print</button>
+    </div>
+    <div class="container">
+      <div class="card">
+        <div class="print">
+          <div class="card-header">
+            <img
+              src="https://drive.google.com/uc?export=view&id=1DFhRTRi5sAh6H_kmC_hr3ruohnZpmYfn"
+              alt="NBTV Bharat Logo"
+              width="100%"
+              height="80px"
+              class="logo"
+            />
+          </div>
+          <div class="card-body">
+            <img src="<%= pic %>" alt="Employee Photo" class="employee-photo" />
+            <div class="employee-name"><%= fullName %></div>
+            <div class="employee-title"><%= designation %></div>
+            <ul class="employee-details">
+              <li><strong>ID:</strong><%= id %></li>
+              <li><strong>Email:</strong><%= email %></li>
+              <li><strong>Phone:</strong><%= contact %></li>
+              <li><strong>Address:</strong><%= address %></li>
+              <li><strong>Aadhaar No:</strong><%= aadhaar %></li>
+              <li><strong>PAN Card No:</strong><%= pan %></li>
+            </ul>
+            <img id="qrcode" src="" alt="QR Code" class="qr" width="30%" />
+          </div>
+        </div>
+        <hr />
+        <p class="description">
+          This ID card serves as a legal form of identification for the employee
+          named above and is issued by NBTV Bharat for company use only.
+        </p>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
+    <!-- Bootstrap JS -->
+    <script>
+      var qrText = "nbtvbharat.co.in/verify-reporter/<%= id %>";
+      var qrCodeUrl =
+        "https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=" +
+        encodeURIComponent(qrText);
+
+      document.getElementById("qrcode").setAttribute("src", qrCodeUrl);
+
+      // Function to print the page as a PDF file
+      function printToPDF() {
+        // Get the HTML content to be printed
+        const content = document.querySelector(".inner-div").innerHTML;
+
+        // Define the options for the PDF file
+        const options = {
+          margin: [0, 0, 0, 0], // top, right, bottom, left margins (in inches)
+          filename: "<%= id %>.pdf", // name of the PDF file
+          image: { type: "jpeg", quality: 1 }, // image format and quality
+          html2canvas: { scale: 2 }, // scale of the HTML content to be printed
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" }, // PDF format and orientation
+        };
+
+        // Use the html2pdf library to generate the PDF file
+        html2pdf().set(options).from(content).save();
+      }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
 </html>
