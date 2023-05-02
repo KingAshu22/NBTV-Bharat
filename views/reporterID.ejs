@@ -19,10 +19,10 @@
       }
       .card-header {
         background-color: #0000fd;
-        color: #0000fd;
+        color: #fff;
         text-align: center;
         font-weight: bold;
-        font-size: 10px;
+        font-size: 15px;
       }
       .card-body {
         text-align: left;
@@ -73,14 +73,13 @@
         body * {
           visibility: hidden;
         }
-
         .print,
         .print * {
           visibility: visible;
         }
         .logo {
-          margin: 0px;
-          padding: 0px;
+          margin-bottom: 0px;
+          padding-bottom: 0px;
         }
         .print {
           width: 100%;
@@ -100,12 +99,12 @@
         <div class="print">
           <div class="card-header">
             <img
-              src="https://drive.google.com/uc?export=view&id=1DFhRTRi5sAh6H_kmC_hr3ruohnZpmYfn"
+              src="/assets/idHeader.svg"
               alt="NBTV Bharat Logo"
               width="100%"
-              height="80px"
               class="logo"
-            />
+            /><br />
+            Reporter ID Card
           </div>
           <div class="card-body">
             <img src="<%= pic %>" alt="Employee Photo" class="employee-photo" />
