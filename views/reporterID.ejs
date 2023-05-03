@@ -10,6 +10,7 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
     <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat");
       /* Custom styles for ID card */
       .card {
         max-width: 480px;
@@ -70,7 +71,32 @@
         text-align: center;
       }
 
+      .footer {
+        background-color: #ed1c24;
+        color: #fff;
+        text-align: center;
+        font-size: xx-large;
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        letter-spacing: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
       @media print {
+        .container-1 {
+          margin-top: auto;
+          margin-left: auto;
+          margin-right: auto;
+          page-break-after: always;
+        }
+
+        .container-2 {
+          margin-top: auto;
+          margin-left: auto;
+          margin-right: auto;
+          page-break-before: always;
+        }
         body * {
           visibility: hidden;
         }
@@ -95,7 +121,7 @@
     <div class="outer-div">
       <button onclick="window.print()">Print</button>
     </div>
-    <div class="container">
+    <div class="container-1">
       <div class="card">
         <div class="print">
           <div class="card-header">
@@ -104,8 +130,7 @@
               alt="NBTV Bharat Logo"
               width="100%"
               class="logo"
-            /><br />
-            Reporter ID Card
+            />
           </div>
           <div class="card-body">
             <img src="<%= pic %>" alt="Employee Photo" class="employee-photo" />
@@ -118,9 +143,69 @@
               <li><strong>Address:</strong><%= address %></li>
               <li><strong>Aadhaar No:</strong><%= aadhaar %></li>
               <li><strong>PAN Card No:</strong><%= pan %></li>
+              <li><strong>Date of Issue:</strong>01/01/2023</li>
             </ul>
             <img id="qrcode" src="" alt="QR Code" class="qr" width="30%" />
           </div>
+          <div class="footer">PRESS</div>
+        </div>
+        <hr />
+      </div>
+    </div>
+
+    <div class="container-2">
+      <div class="card">
+        <div class="print">
+          <div class="card-header">
+            <img
+              src="/assets/idHeader.svg"
+              alt="NBTV Bharat Logo"
+              width="100%"
+              class="logo"
+            />
+          </div>
+          <div class="card-body">
+            <div class="employee-name">INSTRUCTION</div>
+            <ul>
+              <li>This ID Card is valid for 1 year from date of issue.</li>
+              <li>This ID Card is not transferable.</li>
+              <li>
+                This ID is the property of company and must surrendered
+                immediately upon cassation of employment.
+              </li>
+              <li>
+                ID lost / theft should be reported immediately to the head of
+                department issuing authority.
+              </li>
+              <li>
+                Any one ﬁnding this ID card please return at address given
+                overleaf.
+              </li>
+            </ul>
+            <img
+              src="/assets/idHeader.svg"
+              alt="NBTV Bharat Logo"
+              width="100%"
+              class="logo"
+              style="background-color: #0000fd; border-radius: 100%"
+            />
+            <p
+              style="
+                color: #0000fd;
+                text-align: center;
+                font-weight: bolder;
+                font-size: xx-large;
+              "
+            >
+              NEWS BOOK TV BHARAT
+            </p>
+            <p style="text-align: justify">
+              <strong>Corporate Oﬃce:</strong> 414, B- wing, ORM, Orchid Mall,
+              Royal Palms, Aarey Milk, Goregaon East, Mumbai - 400 065
+              <br /><strong>Email ID:</strong>nbtvbharat24x7@gmail.com
+            </p>
+          </div>
+          <div class="footer">PRESS</div>
         </div>
         <hr />
         <p class="description">
